@@ -19,9 +19,13 @@ export default function AddHabit() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/habits", habit, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.post(
+        "https://habit-tracker-pvtq.onrender.com/api/habits",
+        habit,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       alert("Habit added successfully!");
       navigate("/");
     } catch (err) {

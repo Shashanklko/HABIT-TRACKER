@@ -33,7 +33,7 @@ export default function Dashboard() {
       return;
     }
     axios
-      .get("http://localhost:5000/api/habits", {
+      .get("https://habit-tracker-pvtq.onrender.com/api/habits", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setHabits(res.data))
@@ -48,9 +48,12 @@ export default function Dashboard() {
     if (habits.length === 0) return;
     habits.forEach((habit) => {
       axios
-        .get(`http://localhost:5000/api/habits/${habit._id}/weekly-status`, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        .get(
+          `https://habit-tracker-pvtq.onrender.com/api/habits/${habit._id}/weekly-status`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
         .then((res) => {
           setHabitStatus((prev) => ({
             ...prev,
@@ -61,9 +64,12 @@ export default function Dashboard() {
           }));
         });
       axios
-        .get(`http://localhost:5000/api/habits/${habit._id}/monthly-status`, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        .get(
+          `https://habit-tracker-pvtq.onrender.com/api/habits/${habit._id}/monthly-status`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
         .then((res) => {
           setHabitStatus((prev) => ({
             ...prev,
@@ -74,9 +80,12 @@ export default function Dashboard() {
           }));
         });
       axios
-        .get(`http://localhost:5000/api/habits/${habit._id}/streak`, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        .get(
+          `https://habit-tracker-pvtq.onrender.com/api/habits/${habit._id}/streak`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
         .then((res) => {
           setHabitStatus((prev) => ({
             ...prev,
@@ -92,15 +101,18 @@ export default function Dashboard() {
   const markDone = async (habitId) => {
     try {
       await axios.post(
-        `http://localhost:5000/api/habits/${habitId}/log`,
+        `https://habit-tracker-pvtq.onrender.com/api/habits/${habitId}/log`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
       alert("Marked as done!");
       axios
-        .get(`http://localhost:5000/api/habits/${habitId}/weekly-status`, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        .get(
+          `https://habit-tracker-pvtq.onrender.com/api/habits/${habitId}/weekly-status`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
         .then((res) => {
           setHabitStatus((prev) => ({
             ...prev,
@@ -111,9 +123,12 @@ export default function Dashboard() {
           }));
         });
       axios
-        .get(`http://localhost:5000/api/habits/${habitId}/monthly-status`, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        .get(
+          `https://habit-tracker-pvtq.onrender.com/api/habits/${habitId}/monthly-status`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
         .then((res) => {
           setHabitStatus((prev) => ({
             ...prev,
@@ -124,9 +139,12 @@ export default function Dashboard() {
           }));
         });
       axios
-        .get(`http://localhost:5000/api/habits/${habitId}/streak`, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        .get(
+          `https://habit-tracker-pvtq.onrender.com/api/habits/${habitId}/streak`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
         .then((res) => {
           setHabitStatus((prev) => ({
             ...prev,
@@ -144,9 +162,12 @@ export default function Dashboard() {
   const deleteHabit = async (habitId) => {
     if (!window.confirm("Are you sure you want to delete this habit?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/habits/${habitId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://habit-tracker-pvtq.onrender.com/api/habits/${habitId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setHabits((prev) => prev.filter((h) => h._id !== habitId));
       setHabitStatus((prev) => {
         const copy = { ...prev };

@@ -13,13 +13,16 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        form
+      const response = await axios.post(
+        "https://habit-tracker-pvtq.onrender.com/api/auth/login",
+        {
+          email: form.email,
+          password: form.password,
+        }
       );
-      localStorage.setItem("token", res.data.token); // token store kar rahe hain
+      localStorage.setItem("token", response.data.token); 
       alert("Login successful!");
-      navigate("/"); // home page pe redirect
+      navigate("/"); 
     } catch (err) {
       alert("Invalid email or password");
     }
