@@ -26,7 +26,6 @@ Thumbs.db
 clients/dist/
 
 # Backend specific
-backend/logs/
 backend/node_modules/
 
 # Frontend specific
@@ -34,3 +33,4 @@ clients/node_modules/
 
 # Misc
 *.local 
+.vercel
