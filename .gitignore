@@ -1,0 +1,36 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.*
+backend/.env
+clients/.env
+
+# Build output
+dist/
+build/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Vite/React build output
+clients/dist/
+
+# Backend specific
+backend/logs/
+backend/node_modules/
+
+# Frontend specific
+clients/node_modules/
+
+# Misc
+*.local 
